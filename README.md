@@ -13,9 +13,9 @@ Une application web minimaliste qui permet de créer de la musique électronique
 
 **Caractéristiques :**
 - ✨ Génération de musique par IA (Claude)
-- 🎹 Interface Strudel embarquée
+- 🎹 Interface Strudel embarquée complète
 - 🔄 Mise à jour automatique en temps réel
-- ✏️ Éditeur de code manuel
+- ✏️ Édition directe dans Strudel
 - 📱 Design responsive (mobile, tablette, desktop)
 - 🚀 Ultra-léger (HTML/JS vanilla, aucune dépendance)
 
@@ -54,7 +54,7 @@ http://localhost:8000
 4. **Utiliser l'interface**
    - Cliquez sur **PLAY ▶** dans l'éditeur Strudel
    - Demandez à Claude de générer de la musique dans Claude Code
-   - Ou cliquez sur **✏️ Edit Code** pour écrire du code Strudel manuellement
+   - Ou éditez directement le code dans l'interface Strudel
    - La musique se met à jour automatiquement !
 
 ## 🎹 Comment générer de la musique
@@ -121,17 +121,14 @@ Si vous voulez l'utiliser après redémarrage :
 /beat techno kick avec hihat rapide
 ```
 
-### Édition Manuelle
+### Édition Directe dans Strudel
 
-Cliquez sur le bouton **✏️ Edit Code** dans l'interface pour :
-- Écrire ou modifier du code Strudel directement
-- Charger le pattern actuel
-- Appliquer les changements en temps réel
+Vous pouvez également modifier le code **directement dans l'interface Strudel** :
+- Cliquez dans l'éditeur Strudel
+- Modifiez le code comme vous le souhaitez
+- Cliquez PLAY pour entendre les changements
 
-Parfait pour :
-- Ajustements rapides
-- Apprendre la syntaxe Strudel
-- Tester des fragments de code
+**Note :** Les modifications dans Strudel ne sont pas sauvegardées dans `pattern.js`. Pour sauvegarder vos patterns, demandez à Claude de les générer.
 
 ### Workflow complet
 
@@ -203,7 +200,7 @@ strudel-ai-live/
 - **`index.html`** : Interface web avec Strudel embarqué
   - Design responsive (mobile/tablette/desktop)
   - Surveillance automatique de `pattern.js`
-  - Éditeur de code manuel intégré
+  - Éditeur Strudel complet et fonctionnel
   - Bouton flottant vers la documentation
 
 - **`pattern.js`** : Fichier de pattern actif

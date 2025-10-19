@@ -13,9 +13,9 @@ Una aplicación web minimalista que te permite crear música electrónica **en t
 
 **Características:**
 - ✨ Generación de música por IA (Claude)
-- 🎹 Interfaz Strudel integrada
+- 🎹 Interfaz Strudel integrada completa
 - 🔄 Actualización automática en tiempo real
-- ✏️ Editor de código manual
+- ✏️ Edición directa en Strudel
 - 📱 Diseño responsive (móvil, tableta, escritorio)
 - 🚀 Ultra-ligero (HTML/JS vanilla, sin dependencias)
 
@@ -54,7 +54,7 @@ http://localhost:8000
 4. **Usar la interfaz**
    - Haz clic en **PLAY ▶** en el editor Strudel
    - Pide a Claude que genere música en Claude Code
-   - O haz clic en **✏️ Edit Code** para escribir código Strudel manualmente
+   - O edita el código directamente en la interfaz Strudel
    - ¡La música se actualiza automáticamente!
 
 ## 🎹 Cómo Generar Música
@@ -110,17 +110,14 @@ Claude **automáticamente**:
 4. 🔄 La interfaz detectará el cambio (cada 0.5s)
 5. 🎶 ¡El código se carga en Strudel y se reproduce al instante!
 
-### Edición Manual
+### Edición Directa en Strudel
 
-Haz clic en el botón **✏️ Edit Code** en la interfaz para:
-- Escribir o modificar código Strudel directamente
-- Cargar el patrón actual
-- Aplicar cambios en tiempo real
+También puedes modificar el código **directamente en la interfaz Strudel**:
+- Haz clic en el editor Strudel
+- Modifica el código como desees
+- Haz clic en PLAY para escuchar los cambios
 
-Perfecto para:
-- Ajustes rápidos
-- Aprender sintaxis de Strudel
-- Probar fragmentos de código
+**Nota:** Las modificaciones en Strudel no se guardan en `pattern.js`. Para guardar tus patrones, pide a Claude que los genere.
 
 ### Flujo de Trabajo Completo
 
@@ -192,7 +189,7 @@ strudel-ai-live/
 - **`index.html`** : Interfaz web con Strudel integrado
   - Diseño responsive (móvil/tableta/escritorio)
   - Monitoreo automático de `pattern.js`
-  - Editor de código manual
+  - Editor Strudel completo y funcional
   - Botón flotante hacia documentación
 
 - **`pattern.js`** : Archivo de patrón activo

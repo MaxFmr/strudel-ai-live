@@ -13,9 +13,9 @@ A minimalist web application that lets you create electronic music **in real-tim
 
 **Features:**
 - ✨ AI music generation (Claude)
-- 🎹 Embedded Strudel interface
+- 🎹 Full embedded Strudel interface
 - 🔄 Real-time auto-update
-- ✏️ Manual code editor
+- ✏️ Direct editing in Strudel
 - 📱 Responsive design (mobile, tablet, desktop)
 - 🚀 Ultra-lightweight (vanilla HTML/JS, no dependencies)
 
@@ -54,7 +54,7 @@ http://localhost:8000
 4. **Use the interface**
    - Click **PLAY ▶** in the Strudel editor
    - Ask Claude to generate music in Claude Code
-   - Or click **✏️ Edit Code** to write Strudel code manually
+   - Or edit code directly in the Strudel interface
    - Music updates automatically!
 
 ## 🎹 How to Generate Music
@@ -110,17 +110,14 @@ Claude will **automatically**:
 4. 🔄 The interface detects the change (every 0.5s)
 5. 🎶 Code is loaded into Strudel and played instantly!
 
-### Manual Editing
+### Direct Editing in Strudel
 
-Click the **✏️ Edit Code** button in the interface to:
-- Write or modify Strudel code directly
-- Load the current pattern
-- Apply changes in real-time
+You can also modify code **directly in the Strudel interface**:
+- Click in the Strudel editor
+- Modify the code as you wish
+- Click PLAY to hear the changes
 
-Perfect for:
-- Quick tweaks
-- Learning Strudel syntax
-- Testing code snippets
+**Note:** Modifications in Strudel are not saved to `pattern.js`. To save your patterns, ask Claude to generate them.
 
 ### Complete Workflow
 
@@ -192,7 +189,7 @@ strudel-ai-live/
 - **`index.html`** : Web interface with embedded Strudel
   - Responsive design (mobile/tablet/desktop)
   - Automatic `pattern.js` monitoring
-  - Manual code editor
+  - Full and functional Strudel editor
   - Floating button to documentation
 
 - **`pattern.js`** : Active pattern file
