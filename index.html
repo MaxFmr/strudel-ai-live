@@ -71,32 +71,32 @@
             border: none;
         }
 
-        #iframe-overlay {
+        .info-message {
             position: fixed;
-            top: 200px;
-            left: 0;
-            width: 100%;
-            height: calc(100vh - 280px);
-            z-index: 999;
-            background: transparent;
-        }
-
-        #iframe-overlay:hover::after {
-            content: "✏️ Use Edit Code button to modify";
-            position: absolute;
-            bottom: 30%;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             background: rgba(0, 0, 0, 0.95);
             color: #00ff41;
-            padding: 15px 25px;
-            border: 2px solid #00ff41;
-            border-radius: 8px;
+            padding: 20px 30px;
+            border: 3px solid #00ff41;
+            border-radius: 12px;
             font-weight: bold;
-            pointer-events: none;
-            white-space: nowrap;
-            font-size: 14px;
-            box-shadow: 0 4px 20px rgba(0, 255, 65, 0.6);
+            font-size: 16px;
+            box-shadow: 0 4px 30px rgba(0, 255, 65, 0.8);
+            z-index: 10000;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .info-message.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -45%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
         }
 
         .pulse {
@@ -317,7 +317,11 @@
     </div>
 
     <iframe id="strudel-iframe" src="about:blank"></iframe>
-    <div id="iframe-overlay"></div>
+
+    <div class="info-message" id="info-message">
+        ⚠️ Pour modifier le code, utilisez le bouton<br>
+        <strong>✏️ Edit Code</strong>
+    </div>
 
     <button class="edit-toggle" onclick="toggleEditor()">
         ✏️ Edit Code
@@ -396,9 +400,22 @@
             if (isFirstLoad) {
                 status.textContent = '✅ Prêt ! Cliquez PLAY ▶ dans Strudel ci-dessous';
                 isFirstLoad = false;
+
+                // Affiche le message d'info après 2 secondes
+                setTimeout(() => {
+                    showInfoMessage();
+                }, 2000);
             }
 
             console.log('📝 Code chargé:', code);
+        }
+
+        function showInfoMessage() {
+            const msg = document.getElementById('info-message');
+            msg.classList.add('show');
+            setTimeout(() => {
+                msg.classList.remove('show');
+            }, 5000);
         }
 
         // Fonctions de l'éditeur
