@@ -55,24 +55,98 @@ http://localhost:8000
 
 ## 🎹 Comment générer de la musique
 
-### Dans Claude Code
+### Configuration de Claude Code
 
-Demandez simplement à Claude de générer de la musique :
+**Prérequis :** [Claude Code](https://claude.com/claude-code) - L'éditeur de code AI d'Anthropic
+
+#### 1. Installation de Claude Code
+
+Si vous n'avez pas encore Claude Code :
+
+1. Visitez [claude.com/claude-code](https://claude.com/claude-code)
+2. Téléchargez l'application pour votre OS (Mac/Windows/Linux)
+3. Installez et lancez Claude Code
+4. Connectez-vous avec votre compte Anthropic
+
+#### 2. Ouvrir le projet dans Claude Code
+
+```bash
+# Depuis le terminal dans Claude Code
+cd "chemin/vers/app ia algorave"
+```
+
+Ou utilisez **File > Open Folder** et sélectionnez le dossier du projet.
+
+#### 3. Utilisation - Méthode simple
+
+Une fois le serveur local lancé et l'interface ouverte dans votre navigateur :
+
+**Dans Claude Code, tapez simplement vos prompts musicaux :**
 
 ```
-"génère un beat techno rapide"
-"ajoute une ligne de basse acide"
-"crée une mélodie ambient"
-"beat breakbeat jungle avec bass"
-"pattern minimal house"
+génère un beat techno rapide
 ```
 
-Claude va :
-1. Générer le code Strudel approprié
-2. L'écrire dans `pattern.js`
-3. L'interface détecte le changement (toutes les 0.5s)
-4. Le code est chargé automatiquement dans Strudel
-5. La musique change en temps réel !
+```
+ajoute une ligne de basse acide
+```
+
+```
+crée une mélodie ambient avec reverb
+```
+
+```
+beat breakbeat jungle avec bass et mélodie repetitive
+```
+
+Claude va **automatiquement** :
+1. ✨ Comprendre votre demande musicale
+2. 🎵 Générer le code Strudel approprié
+3. 💾 L'écrire dans `pattern.js`
+4. 🔄 L'interface détecte le changement (toutes les 0.5s)
+5. 🎶 Le code est chargé dans Strudel et joué instantanément !
+
+#### 4. Commande personnalisée (optionnelle)
+
+Le projet inclut une commande Claude optionnelle `/beat` (dans `.claude/commands/beat.md`).
+
+> **Note :** Cette commande nécessite un redémarrage de Claude Code pour être chargée. Vous pouvez simplement utiliser des prompts naturels comme ci-dessus.
+
+Si vous voulez l'utiliser après redémarrage :
+```
+/beat techno kick avec hihat rapide
+```
+
+### Workflow complet
+
+```
+┌─────────────────┐
+│  Claude Code    │
+│  "génère un     │
+│   beat techno"  │
+└────────┬────────┘
+         │
+         ▼
+    Génère code
+    Strudel
+         │
+         ▼
+┌────────────────┐
+│  pattern.js    │
+│  s("bd*4")     │
+└────────┬───────┘
+         │
+         ▼
+    Détection
+    (500ms)
+         │
+         ▼
+┌────────────────┐
+│  Interface     │
+│  Strudel.cc    │
+│  ▶️ Musique !  │
+└────────────────┘
+```
 
 ### Exemples de prompts
 
@@ -99,12 +173,29 @@ Claude va :
 app ia algorave/
 ├── index.html          # Interface principale (responsive)
 ├── pattern.js          # Code Strudel généré par Claude
-├── README.md           # Documentation
+├── README.md           # Documentation complète
 ├── .gitignore          # Fichiers Git à ignorer
 └── .claude/
     └── commands/
-        └── beat.md     # Commande Claude (optionnelle)
+        └── beat.md     # Commande slash Claude (optionnelle)
 ```
+
+### Fichiers principaux
+
+- **`index.html`** : Interface web avec Strudel embarqué
+  - Design responsive (mobile/tablette/desktop)
+  - Surveillance automatique de `pattern.js`
+  - Bouton flottant vers la documentation
+
+- **`pattern.js`** : Fichier de pattern actif
+  - Contient le code Strudel entre `/* PATTERN_START */` et `/* PATTERN_END */`
+  - Modifié automatiquement par Claude Code
+  - Surveillé toutes les 500ms par l'interface
+
+- **`.claude/commands/beat.md`** : Commande slash optionnelle
+  - Permet d'utiliser `/beat <prompt>` dans Claude Code
+  - Nécessite un redémarrage de Claude Code pour être chargée
+  - Alternative : utilisez simplement des prompts naturels
 
 ## 🎓 Syntaxe Strudel (référence rapide)
 
@@ -163,19 +254,40 @@ L'interface s'adapte automatiquement :
 
 ## 🐛 Troubleshooting
 
+### Problèmes d'interface
+
 **"Le pattern ne se met pas à jour"**
-- Vérifiez que le serveur local est bien lancé
-- Regardez la console du navigateur (F12)
-- Vérifiez que `pattern.js` contient bien les marqueurs
+- ✅ Vérifiez que le serveur local est bien lancé (`python3 -m http.server 8000`)
+- ✅ Regardez la console du navigateur (F12) pour les erreurs
+- ✅ Vérifiez que `pattern.js` contient bien les marqueurs `/* PATTERN_START */` et `/* PATTERN_END */`
+- ✅ Le statut en haut de l'interface devrait afficher "🎶 Mis à jour: [heure]"
 
 **"Pas de son"**
-- Cliquez sur PLAY ▶ dans l'éditeur Strudel
-- Vérifiez le volume de votre système
-- Certains navigateurs bloquent l'audio avant interaction utilisateur
+- ✅ Cliquez sur **PLAY ▶** dans l'éditeur Strudel (en haut à gauche)
+- ✅ Vérifiez le volume de votre système
+- ✅ Certains navigateurs bloquent l'audio avant interaction utilisateur
+- ✅ Testez avec un pattern simple : `s("bd sd")`
 
 **"L'iframe ne charge pas"**
-- Vérifiez votre connexion internet (Strudel.cc est chargé en ligne)
-- Essayez de recharger la page (Ctrl+R)
+- ✅ Vérifiez votre connexion internet (Strudel.cc est chargé en ligne)
+- ✅ Essayez de recharger la page (Ctrl+R ou Cmd+R)
+- ✅ Désactivez les bloqueurs de contenu/publicité temporairement
+
+### Problèmes avec Claude Code
+
+**"Claude ne génère pas de code"**
+- ✅ Assurez-vous d'avoir ouvert le dossier du projet dans Claude Code
+- ✅ Soyez explicite : "génère un beat techno" plutôt que "fait de la musique"
+- ✅ Claude devrait répondre avec le code généré et confirmer l'écriture dans `pattern.js`
+
+**"La commande /beat ne fonctionne pas"**
+- ✅ Redémarrez Claude Code pour charger les commandes personnalisées
+- ✅ Alternative : utilisez simplement des prompts naturels (recommandé)
+
+**"Erreur de syntaxe Strudel"**
+- ✅ Vérifiez la console Strudel pour les erreurs
+- ✅ Demandez à Claude de corriger : "corrige l'erreur dans le pattern"
+- ✅ Utilisez un pattern de base pour reset : `s("bd sd")`
 
 ## 🎨 Personnalisation
 
