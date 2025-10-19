@@ -71,6 +71,32 @@
             border: none;
         }
 
+        #iframe-overlay {
+            position: fixed;
+            top: 140px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 220px);
+            z-index: 999;
+            background: transparent;
+        }
+
+        #iframe-overlay:hover::after {
+            content: "✏️ Use Edit Code button to modify";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: #00ff41;
+            padding: 20px 30px;
+            border: 2px solid #00ff41;
+            border-radius: 8px;
+            font-weight: bold;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
         .pulse {
             animation: pulse 1s ease-in-out infinite;
         }
@@ -289,6 +315,7 @@
     </div>
 
     <iframe id="strudel-iframe" src="about:blank"></iframe>
+    <div id="iframe-overlay"></div>
 
     <button class="edit-toggle" onclick="toggleEditor()">
         ✏️ Edit Code
