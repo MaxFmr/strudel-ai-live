@@ -5,6 +5,8 @@ Interface de génération musicale en temps réel utilisant **Claude AI** pour g
 ![Version](https://img.shields.io/badge/version-1.0.0-green)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
+**🌍 Langues:** **Français** | [English](README.en.md) | [Español](README.es.md)
+
 ## 🎵 Qu'est-ce que c'est ?
 
 Une application web minimaliste qui permet de créer de la musique électronique **en temps réel** en décrivant ce que vous voulez en langage naturel à Claude AI. Le code Strudel généré est automatiquement chargé dans l'éditeur et joué instantanément.
@@ -13,6 +15,7 @@ Une application web minimaliste qui permet de créer de la musique électronique
 - ✨ Génération de musique par IA (Claude)
 - 🎹 Interface Strudel embarquée
 - 🔄 Mise à jour automatique en temps réel
+- ✏️ Éditeur de code manuel
 - 📱 Design responsive (mobile, tablette, desktop)
 - 🚀 Ultra-léger (HTML/JS vanilla, aucune dépendance)
 
@@ -51,6 +54,7 @@ http://localhost:8000
 4. **Utiliser l'interface**
    - Cliquez sur **PLAY ▶** dans l'éditeur Strudel
    - Demandez à Claude de générer de la musique dans Claude Code
+   - Ou cliquez sur **✏️ Edit Code** pour écrire du code Strudel manuellement
    - La musique se met à jour automatiquement !
 
 ## 🎹 Comment générer de la musique
@@ -117,6 +121,18 @@ Si vous voulez l'utiliser après redémarrage :
 /beat techno kick avec hihat rapide
 ```
 
+### Édition Manuelle
+
+Cliquez sur le bouton **✏️ Edit Code** dans l'interface pour :
+- Écrire ou modifier du code Strudel directement
+- Charger le pattern actuel
+- Appliquer les changements en temps réel
+
+Parfait pour :
+- Ajustements rapides
+- Apprendre la syntaxe Strudel
+- Tester des fragments de code
+
 ### Workflow complet
 
 ```
@@ -170,10 +186,12 @@ Si vous voulez l'utiliser après redémarrage :
 ## 📁 Structure du projet
 
 ```
-app ia algorave/
+strudel-ai-live/
 ├── index.html          # Interface principale (responsive)
 ├── pattern.js          # Code Strudel généré par Claude
-├── README.md           # Documentation complète
+├── README.md           # Documentation française
+├── README.en.md        # Documentation anglaise
+├── README.es.md        # Documentation espagnole
 ├── .gitignore          # Fichiers Git à ignorer
 └── .claude/
     └── commands/
@@ -185,6 +203,7 @@ app ia algorave/
 - **`index.html`** : Interface web avec Strudel embarqué
   - Design responsive (mobile/tablette/desktop)
   - Surveillance automatique de `pattern.js`
+  - Éditeur de code manuel intégré
   - Bouton flottant vers la documentation
 
 - **`pattern.js`** : Fichier de pattern actif
